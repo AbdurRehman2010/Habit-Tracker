@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Batman-Themed Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1><span class="bat-symbol">🦇</span> Batman Habit Tracker</h1>
+    </header>
+
+    <!-- Habit Form -->
+    <section class="habit-form-section">
+      <form id="habit-form">
+        <input type="text" id="habit-name" placeholder="New Habit (e.g., Fight crime)" required>
+        <input type="number" id="habit-frequency" placeholder="Frequency (days/week)" required>
+        <button type="submit" class="btn-add">Add Habit</button>
+      </form>
+    </section>
+
+    <!-- Habits List -->
+    <section class="habit-list-section">
+      <h2>Your Gotham Duties</h2>
+      <div id="habit-list" class="habit-list"></div>
+    </section>
+  </div>
+
+  <script>const habitForm = document.getElementById('habit-form');
+    const habitName = document.getElementById('habit-name');
+    const habitFrequency = document.getElementById('habit-frequency');
+    const habitList = document.getElementById('habit-list');
+    
+    // Load habits from localStorage or initialize an empty array
+    let habits = JSON.parse(localStorage.getItem('habits')) || [];
+    
+    // Add new habit function
+    function addHabit(name, frequency) {
+      const habit = {
+        name,
+        frequency,
+        progress: 0, // Starting with 0% progress
+        completed: false,
+      };
+      habits.push(habit);
+      saveHabits();
+      renderHabits();
+    }
+    
+    // Save habits to localStorage
+    function saveHabits() {
+      localStorage.setItem('habits', JSON.stringify(habits));
+    }
+    
+    // Render habits to the DOM
+    function renderHabits() {
+      habitList.innerHTML = ''; // Clear existing habits
+      habits.forEach((habit, index) => {
+        const habitItem = document.createElement('div');
+        habitItem.classList.add('habit-item');
+    
+        habitItem.innerHTML = `
+          <h3>${habit.name}</h3>
+          <div class="progress">
+            <div class="progress-bar" style="width: ${habit.progress}%"></div>
+          </div>
+          <button onclick="deleteHabit(${index})">Delete</button>
+        `;
+    
+        habitList.appendChild(habitItem);
+      });
+    }
+    
+    function deleteHabit(index) {
+      habits.splice(index, 1); 
+      saveHabits();
+      renderHabits();
+    }
+    
+    habitForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = habitName.value;
+      const frequency = habitFrequency.value;
+    
+      if (name && frequency) {
+        addHabit(name, frequency);
+        habitForm.reset(); // Clear form inputs
+      }
+    });
+    
+    renderHabits();
+
+
+    </script>
+</body>
+</html>

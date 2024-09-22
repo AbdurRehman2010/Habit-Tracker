@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Arial', sans-serif;
+    background-image: url('bg.jpg'); /* URL of your image */
+    background-size: cover; /* Ensures the image covers the entire background */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; 
+        color: #e0e0e0;
+  }
+  
+  .container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.726);
+
+    border-radius: 8px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  header h1 {
+    color: #ffdf00;
+    font-size: 2.5em;
+  }
+  
+  .bat-symbol {
+    font-size: 1.5em;
+  }
+  
+  .habit-form-section {
+    display: flex;
+    justify-content: center;
+  }
+  
+  form {
+    display: flex;
+    gap: 10px;
+  }
+  
+  input {
+    padding: 10px;
+    font-size: 1.2em;
+    border-radius: 4px;
+    border: 2px solid #555;
+    background-color: #1f1f1f;
+    color: #e0e0e0;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #ffdf00;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #ffc300;
+  }
+  
+  .habit-list-section {
+    margin-top: 30px;
+  }
+  
+  .habit-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+  }
+  
+  .habit-item {
+    padding: 20px;
+    background-color: #2e2e2e;
+    border-radius: 8px;
+    position: relative;
+  }
+  
+  .habit-item h3 {
+    margin-bottom: 10px;
+  }
+  
+  .habit-item .progress {
+    width: 100%;
+    height: 10px;
+    background-color: #555;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+  .habit-item .progress-bar {
+    height: 100%;
+    background-color: #ffdf00;
+    width: 0;
+  }
+  
+  .habit-item button {
+    padding: 5px 10px;
+    color: white;
+    background-color: #ff0044;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .habit-item button:hover {
+    background-color: #ff0022;
+  }
+  
